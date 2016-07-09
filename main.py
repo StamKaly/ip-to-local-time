@@ -10,4 +10,6 @@ db.db()
 print(localip.localip())
 print(timezone.local())
 print(timezone.timezone("37.6.241.211"))
-# localt (= local time) doesnt work yet
+print(localt.localt("37.6.241.211"))
+
+# Put any IP in functions localt (= local time) and timezone to get the results ^^
