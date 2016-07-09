@@ -1,4 +1,4 @@
-from . import localip
+import localip
 import geoip2.database as d
 
 
