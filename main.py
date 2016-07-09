@@ -1,8 +1,4 @@
-import get.db as db
-import get.dbhash as dbhash
-import get.localip as localip
-import get.localt as localt
-import get.timezone as timezone
+from get import *
 
 
 
