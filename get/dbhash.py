@@ -1,7 +1,7 @@
 from os.path import isfile
 from hashlib import md5
 from requests import get
-from . import db
+import db
 
 
 
