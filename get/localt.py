@@ -1,4 +1,4 @@
-from . import timezone, localip
+import timezone, localip
 import pytz
 from datetime import datetime
 from time import localtime
