@@ -5,7 +5,7 @@ import geoip2.database as d
 
 def timezone(ip):
     try:
-        reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
+        reader = d.Reader('./db/GeoLite2-City.mmdb')
     except FileNotFoundError:
         db.update()
         sys.exit(0)
@@ -17,7 +17,7 @@ def timezone(ip):
 
 def local():
     try:
-        reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
+        reader = d.Reader('./db/GeoLite2-City.mmdb')
     except FileNotFoundError:
         db.update()
         sys.exit(0)
