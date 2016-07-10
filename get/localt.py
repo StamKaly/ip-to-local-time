@@ -6,47 +6,109 @@ import geoip2.database
 import sys
 
 
-def localt(ip):
+def ip2lt(ip):
     reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
     try:
-        my_ip = localip.localip()
-        myip = reader.city(my_ip)
-        local_tz = pytz.timezone(str(myip.location.time_zone))
-    except pytz.exceptions.UnknownTimeZoneError:
-        print("Unable to detect your local time zone, try using\n'localt.localt2(your time zone, ip)' instead")
+        try:
+            my_ip = localip.localip()
+            myip = reader.city(my_ip)
+            local_tz = pytz.timezone(str(myip.location.time_zone))
+        except pytz.exceptions.UnknownTimeZoneError:
+            print("Unable to detect your local time zone, try using\n'localt.ip2lt2(your time zone, ip)' instead")
+            sys.exit(0)
+        try:
+            tz = timezone.timezone(ip)
+            resp_tz = pytz.timezone(tz)
+        except pytz.exceptions.UnknownTimeZoneError:
+            print("Unable to detect given IP's time zone")
+            sys.exit(0)
+        local_time = localtime()
+        local_dt = local_tz.localize(
+            datetime(local_time.tm_year, local_time.tm_mon, local_time.tm_mday, local_time.tm_hour, local_time.tm_min,
+                     local_time.tm_sec, 0))
+        resp_dt = local_dt.astimezone(resp_tz)
+        fmt = '%H:%M'
+    except ValueError:
+        print("Please insert a valid IP Address")
         sys.exit(0)
-    try:
-        tz = timezone.timezone(ip)
-        resp_tz = pytz.timezone(tz)
-    except pytz.exceptions.UnknownTimeZoneError:
-        print("Unable to detect given IP's time zone")
-        sys.exit(0)
-    local_time = localtime()
-    local_dt = local_tz.localize(
-        datetime(local_time.tm_year, local_time.tm_mon, local_time.tm_mday, local_time.tm_hour, local_time.tm_min,
-                 local_time.tm_sec, 0))
-    resp_dt = local_dt.astimezone(resp_tz)
-    fmt = '%H:%M'
     return resp_dt.strftime(fmt)
 
 
-def localt2(your_time_zone, ip):
+def ip2lt2(your_time_zone, ip):
     reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
     try:
-        local_tz = pytz.timezone(str(your_time_zone))
-    except pytz.exceptions.UnknownTimeZoneError:
-        print("Unable to detect your local time zone in the database, please try again!")
+        try:
+            local_tz = pytz.timezone(str(your_time_zone))
+        except pytz.exceptions.UnknownTimeZoneError:
+            print("Unable to detect your local time zone in the database, please try again!")
+            sys.exit(0)
+        try:
+            tz = timezone.timezone(ip)
+            resp_tz = pytz.timezone(tz)
+        except pytz.exceptions.UnknownTimeZoneError:
+            print("Unable to detect given IP's time zone")
+            sys.exit(0)
+        local_time = localtime()
+        local_dt = local_tz.localize(
+            datetime(local_time.tm_year, local_time.tm_mon, local_time.tm_mday, local_time.tm_hour, local_time.tm_min,
+                     local_time.tm_sec, 0))
+        resp_dt = local_dt.astimezone(resp_tz)
+        fmt = '%H:%M'
+    except ValueError:
+        print("Please insert a valid IP Address")
         sys.exit(0)
+    return resp_dt.strftime(fmt)
+
+
+def tz2lt2(your_time_zone, time_zone):
+    reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
     try:
-        tz = timezone.timezone(ip)
-        resp_tz = pytz.timezone(tz)
-    except pytz.exceptions.UnknownTimeZoneError:
-        print("Unable to detect given IP's time zone")
+        try:
+            local_tz = pytz.timezone(str(your_time_zone))
+        except pytz.exceptions.UnknownTimeZoneError:
+            print("Unable to detect your local time zone in the database, please try again!")
+            sys.exit(0)
+        try:
+            resp_tz = pytz.timezone(time_zone)
+        except pytz.exceptions.UnknownTimeZoneError:
+            print("Unable to detect given time zone in the database, please try again!")
+            sys.exit(0)
+        local_time = localtime()
+        local_dt = local_tz.localize(
+            datetime(local_time.tm_year, local_time.tm_mon, local_time.tm_mday, local_time.tm_hour, local_time.tm_min,
+                     local_time.tm_sec, 0))
+        resp_dt = local_dt.astimezone(resp_tz)
+        fmt = '%H:%M'
+    except ValueError:
+        print("Please insert a valid IP Address")
         sys.exit(0)
-    local_time = localtime()
-    local_dt = local_tz.localize(
-        datetime(local_time.tm_year, local_time.tm_mon, local_time.tm_mday, local_time.tm_hour, local_time.tm_min,
-                 local_time.tm_sec, 0))
-    resp_dt = local_dt.astimezone(resp_tz)
-    fmt = '%H:%M'
+    return resp_dt.strftime(fmt)
+
+
+
+
+def tz2lt(time_zone):
+    reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
+    try:
+        try:
+            my_ip = localip.localip()
+            myip = reader.city(my_ip)
+            local_tz = pytz.timezone(str(myip.location.time_zone))
+        except pytz.exceptions.UnknownTimeZoneError:
+            print("Unable to detect your local time zone, try using\n'localt.tz2lt2(your time zone, time zone)' instead")
+            sys.exit(0)
+        try:
+            resp_tz = pytz.timezone(time_zone)
+        except pytz.exceptions.UnknownTimeZoneError:
+            print("Unable to detect given time zone in the database, please try again!")
+            sys.exit(0)
+        local_time = localtime()
+        local_dt = local_tz.localize(
+            datetime(local_time.tm_year, local_time.tm_mon, local_time.tm_mday, local_time.tm_hour, local_time.tm_min,
+                     local_time.tm_sec, 0))
+        resp_dt = local_dt.astimezone(resp_tz)
+        fmt = '%H:%M'
+    except ValueError:
+        print("Please insert a valid IP Address")
+        sys.exit(0)
     return resp_dt.strftime(fmt)
