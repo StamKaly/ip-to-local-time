@@ -6,10 +6,10 @@ from get import timezone
 
 
 
-db.db()
+db.download()
 print(localip.localip())
 print(timezone.local())
 print(timezone.timezone("37.6.241.211"))
-print(localt.localt("37.6.241.211"))
+print(localt.ip2tz("37.6.241.211"))
 
-# Put any IP in functions localt (= local time) and timezone to get the results ^^
+
