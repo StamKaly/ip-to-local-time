@@ -14,7 +14,7 @@ def download():
         with open("./db/GeoLite2-City.mmdb", 'wb') as outfile:
             outfile.write(infile.read())
 
-def updater():
+def update():
     if (isfile("./db/GeoLite2-City.mmdb") is True):
         # Get current's database hash
         BLOCKSIZE = 13107200
