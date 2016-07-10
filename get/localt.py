@@ -1,4 +1,4 @@
-from . import timezone, localip
+from . import timezone, localip, db
 import pytz
 from datetime import datetime
 from time import localtime
@@ -7,7 +7,11 @@ import sys
 
 
 def ip2lt(ip):
-    reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
+    try:
+        reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
+    except FileNotFoundError:
+        db.update()
+        sys.exit(0)
     try:
         try:
             my_ip = localip.localip()
@@ -35,7 +39,11 @@ def ip2lt(ip):
 
 
 def ip2lt2(your_time_zone, ip):
-    reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
+    try:
+        reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
+    except FileNotFoundError:
+        db.update()
+        sys.exit(0)
     try:
         try:
             local_tz = pytz.timezone(str(your_time_zone))
@@ -61,7 +69,11 @@ def ip2lt2(your_time_zone, ip):
 
 
 def tz2lt2(your_time_zone, time_zone):
-    reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
+    try:
+        reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
+    except FileNotFoundError:
+        db.update()
+        sys.exit(0)
     try:
         try:
             local_tz = pytz.timezone(str(your_time_zone))
@@ -88,7 +100,11 @@ def tz2lt2(your_time_zone, time_zone):
 
 
 def tz2lt(time_zone):
-    reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
+    try:
+        reader = geoip2.database.Reader('./db/GeoLite2-City.mmdb')
+    except FileNotFoundError:
+        db.update()
+        sys.exit(0)
     try:
         try:
             my_ip = localip.localip()
