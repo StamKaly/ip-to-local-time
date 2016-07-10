@@ -1,4 +1,5 @@
-from os.path import isfile
+from os.path import isfile, isdir
+from os import makedirs
 from hashlib import md5
 from requests import get
 from gzip import open as unzip
@@ -38,5 +39,10 @@ def update():
             message = print("Uknown error while identifying hashes")
             return message
     else:
-        message = print("Database was not found, please wait while it is being\ndownloaded...")
-        download()
+        if (isdir("./db") is True):
+            print("Database was not found, please wait while it is being\ndownloaded...")
+            download()
+        else:
+            print("Path './db' was not found, please wait while it is being\ncreated and the database is being downloaded...")
+            makedirs("db")
+            download()
