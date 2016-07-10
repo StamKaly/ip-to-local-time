@@ -1,14 +1,9 @@
-from get import db
-from get import localip
-from get import localt
-from get import timezone
+from get import *
 
 
 
-db.download()
+db.update()
 print(localip.localip())
 print(timezone.local())
 print(timezone.timezone("37.6.241.211"))
 print(localt.ip2lt("37.6.241.211"))
-
-
