@@ -2,7 +2,7 @@ from get import *
 
 
 
-db.update()
+
 print(localip.localip())
 print(timezone.local())
 print(timezone.timezone("37.6.241.211"))
