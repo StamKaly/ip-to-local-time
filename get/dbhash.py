@@ -1,12 +1,20 @@
 from os.path import isfile
 from hashlib import md5
 from requests import get
-from . import db
+from gzip import open as unzip
 
 
+def download():
+    dburl = "http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
+    response = get(dburl)
+    with open("./db/GeoLite2-City.mmdb.gz", 'wb') as handle:
+        for data in response.iter_content(1024):
+            handle.write(data)
+    with unzip("./db/GeoLite2-City.mmdb.gz", 'rb') as infile:
+        with open("./db/GeoLite2-City.mmdb", 'wb') as outfile:
+            outfile.write(infile.read())
 
-
-def dbhash():
+def updater():
     if (isfile("./db/GeoLite2-City.mmdb") is True):
         # Get current's database hash
         BLOCKSIZE = 13107200
@@ -20,11 +28,15 @@ def dbhash():
         dbhashurl = get("http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.md5")
         dbhash = str(dbhashurl.text)
         if (dbhash != hasher.hexdigest()):
-            db.db()
-            print("Database updated successfully!")
+            download()
+            message = print("Database updated successfully!")
+            return message
         elif (dbhash == hasher.hexdigest()):
-            print("Database is already up-to-date.")
+            message = print("Database is already up-to-date.")
+            return message
         else:
-            print("Uknown error while identifying hashes")
+            message = print("Uknown error while identifying hashes")
+            return message
     else:
-        print("Database was not found")
+        message = print("Database was not found, please wait while it is being\ndownloaded...")
+        download()
