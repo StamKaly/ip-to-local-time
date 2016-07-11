@@ -16,5 +16,5 @@ nondst_converted = target.normalize(nondst_time.astimezone(target));
 
 fmt = '%H%M'
 
-print(dst_converted(fmt))
-print(nondst_converted(fmt))
+print(dst_converted)
+print(nondst_converted)
