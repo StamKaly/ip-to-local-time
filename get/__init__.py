@@ -1,1 +1,1 @@
-from . import db, localip, localt, tdiff, timezone
+from . import db, localip, localt, timezone
