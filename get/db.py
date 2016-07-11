@@ -36,7 +36,7 @@ def update():
             message = print("Database is already up-to-date.")
             return message
         else:
-            message = print("Uknown error while identifying hashes")
+            message = print("Unknown error while identifying hashes")
             return message
     else:
         if (isdir("./db") is True):
