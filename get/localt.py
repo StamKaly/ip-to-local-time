@@ -4,13 +4,12 @@ import pytz
 import time
 import sys
 
-
 def ip2lt(ip):
 	try:
 		target_tz = pytz.timezone(timezone.timezone(ip))
 	except pytz.exceptions.UnknownTimeZoneError:
 		print("Unable to detect given IP's time zone, try using\n'localt.ip2lt2(time zone)' instead")
-        sys.exit(0)
+        	sys.exit(0)
     utcdate = time.gmtime()
     target_dt = datetime(utcdate.tm_year, utcdate.tm_mon, utcdate.tm_mday, utcdate.tm_hour, utcdate.tm_min, 0, tzinfo=pytz.utc)
     conversion = target_tz.normalize(target_dt.astimezone(target_tz))
@@ -25,7 +24,7 @@ def ip2lt2(time_zone):
 		target_tz = pytz.timezone(time_zone)
 	except pytz.exceptions.UnknownTimeZoneError:
 		print("Unable to detect given IP's time zone, try using\n'localt.ip2lt2(time zone)' instead")
-        sys.exit(0)
+        	sys.exit(0)
     utcdate = time.gmtime()
     target_dt = datetime(utcdate.tm_year, utcdate.tm_mon, utcdate.tm_mday, utcdate.tm_hour, utcdate.tm_min, 0, tzinfo=pytz.utc)
     conversion = target_tz.normalize(target_dt.astimezone(target_tz))
