@@ -14,5 +14,7 @@ target = timezone('US/Eastern')
 dst_converted = target.normalize(dst_time.astimezone(target));
 nondst_converted = target.normalize(nondst_time.astimezone(target));
 
-print(dst_converted)
-print(nondst_converted)
+fmt = '%H%M'
+
+print(dst_converted(fmt))
+print(nondst_converted(fmt))
