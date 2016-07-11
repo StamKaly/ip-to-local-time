@@ -1,4 +1,4 @@
-from . import timezone, localip, db
+from . import timezone, localip, db, isdst
 import pytz
 from datetime import datetime
 from time import localtime
@@ -24,12 +24,12 @@ def ip2lt(ip):
             tz = timezone.timezone(ip)
             resp_tz = pytz.timezone(tz)
         except pytz.exceptions.UnknownTimeZoneError:
-            print("Unable to detect given IP's time zone")
+            print("Unable to detect given IP's time zone, try using\n'localt.tz2lt(time zone)' instead")
             sys.exit(0)
         local_time = localtime()
         local_dt = local_tz.localize(
             datetime(local_time.tm_year, local_time.tm_mon, local_time.tm_mday, local_time.tm_hour, local_time.tm_min,
-                     local_time.tm_sec, 0))
+                     local_time.tm_sec, local_time.tm_isdst))
         resp_dt = local_dt.astimezone(resp_tz)
         fmt = '%H:%M'
     except ValueError:
@@ -54,12 +54,12 @@ def ip2lt2(your_time_zone, ip):
             tz = timezone.timezone(ip)
             resp_tz = pytz.timezone(tz)
         except pytz.exceptions.UnknownTimeZoneError:
-            print("Unable to detect given IP's time zone")
+            print("Unable to detect given IP's time zone, try using\n'localt.tz2lt2(your time zone, time zone)' instead")
             sys.exit(0)
         local_time = localtime()
         local_dt = local_tz.localize(
             datetime(local_time.tm_year, local_time.tm_mon, local_time.tm_mday, local_time.tm_hour, local_time.tm_min,
-                     local_time.tm_sec, 0))
+                     local_time.tm_sec, local_time.tm_isdst), is_dst = timezone.isdstip(ip))
         resp_dt = local_dt.astimezone(resp_tz)
         fmt = '%H:%M'
     except ValueError:
@@ -88,7 +88,7 @@ def tz2lt2(your_time_zone, time_zone):
         local_time = localtime()
         local_dt = local_tz.localize(
             datetime(local_time.tm_year, local_time.tm_mon, local_time.tm_mday, local_time.tm_hour, local_time.tm_min,
-                     local_time.tm_sec, 0))
+                     local_time.tm_sec, local_time.tm_isdst), is_dst = timezone.isdstip(ip))
         resp_dt = local_dt.astimezone(resp_tz)
         fmt = '%H:%M'
     except ValueError:
