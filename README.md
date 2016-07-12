@@ -13,14 +13,14 @@ It's very easy and straightforward just run the following command:
 ```
 pip install -r requirements
 ```
-Then run **_dbdl.py_** to download the database with the time zones
+Then run [dbdl.py](http://github.com/StamKaly/ip-to-local-time/blob/master/dbdl.py) to download the database with the time zones
 
 
 ## Databases
 
 The code is using 2 different databases:
-- Time zones database which is offered to us by geoip
-- An editable, CSV time zones [database](http://github.com/StamKaly/ip-to-local-time/blob/master/get/ip-timezone/ip-timezone.csv)
+* Time zones database which is offered to us by geoip
+* An editable, CSV time zones [database](http://github.com/StamKaly/ip-to-local-time/blob/master/get/ip-timezone/ip-timezone.csv)
 
 They both have the same usage, but the reason we actually use the second one is because
 some IPs aren't in the big database by geoip and that causes an error in the code. 
