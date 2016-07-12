@@ -6,15 +6,23 @@ import sys
 
 
 def ip2lt(ip):
+    '''
+    Return the local time of the IP given
+    '''
+    # Check if the IP is valid
     try:
+        # Check if the IP is in the main database
         try:
             target_tz = pytz.timezone(timezone.timezone(ip))
         except pytz.exceptions.UnknownTimeZoneError:
+            # If it isn't check the secondary database
             if csvreader.ip(ip) is not None:
                 target_tz = pytz.timezone(csvreader.ip(ip))
             else:
+                # If it's not in the secondary database exit
                 print("Unable to detect given IP's time zone neither in the time zone database nor\nin the IP database, add the IP into the database!")
                 sys.exit(0)
+        # Get GMT time, convert it to the specific time zone and return the time
         utcdate = time.gmtime()
         target_dt = datetime(utcdate.tm_year, utcdate.tm_mon, utcdate.tm_mday, utcdate.tm_hour, utcdate.tm_min, 0, tzinfo=pytz.utc)
         conversion = target_tz.normalize(target_dt.astimezone(target_tz))
@@ -22,9 +30,11 @@ def ip2lt(ip):
         dt, t = timestr.split(' ')
         tim = t[:5]
         return tim
+    # If it isn't exit
     except ValueError:
         print("Please enter a valid IP address!")
         sys.exit(0)
+    # All the definitions below follow the same logic
     
 
 
