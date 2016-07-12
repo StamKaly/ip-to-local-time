@@ -11,7 +11,7 @@ You may only need to use [get.localt](http://github.com/StamKaly/ip-to-local-tim
 
 It's very easy and straightforward just run the following command:
 ```
-pip install -r requirements
+pip install -r requirements.txt
 ```
 Then run [dbdl.py](http://github.com/StamKaly/ip-to-local-time/blob/master/dbdl.py) to download the database with the time zones
 
