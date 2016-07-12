@@ -23,7 +23,7 @@ def download():
 
 def update():
     '''
-    Update the database
+    Updates the database
     '''
     # Check if the database exists
     if (isfile("./db/GeoLite2-City.mmdb") is True):
