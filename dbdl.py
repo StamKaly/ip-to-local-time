@@ -1,2 +1,2 @@
 from get import db
-download()
+db.download()
