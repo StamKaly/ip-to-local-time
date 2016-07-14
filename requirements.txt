@@ -1,2 +1,5 @@
 pytz
 geoip2
+requests
+maxminddb
+six

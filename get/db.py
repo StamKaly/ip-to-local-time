@@ -41,21 +41,22 @@ def update():
         # If the two hashes differ, download the database
         if (dbhash != hasher.hexdigest()):
             download()
-            message = print("Database updated successfully!")
-            return message
+            return "Database updated successfully!"
         # If the two hashes are the same exit without downloading
         elif (dbhash == hasher.hexdigest()):
-            message = print("Database is already up-to-date.")
-            return message
+            return "Database is already up-to-date."
+            
     # If it doesn't download it
     else:
         # Check if the database directory exists
         if (isdir("./db") is True):
             # If it does just run the download
-            print("Database was not found, please wait while it is being\ndownloaded...")
+            print ("Database was not found, please wait while it is being\ndownloaded...")
             download()
+            return "Database downloaded successfully!"
         else:
             # If it doesn't create the database path and then run download
-            print("Path './db' was not found, please wait while it is being\ncreated and the database is being downloaded...")
+            print ("Path './db' was not found, please wait while it is being\ncreated and the database is being downloaded...")
             makedirs("db")
             download()
+            return "Database downloaded successfully!"

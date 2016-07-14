@@ -2,18 +2,19 @@
 
 This is my first project with time and a small reason I made it is to get a feel
 of the language.
-You may only need to use [get.localt](http://github.com/StamKaly/ip-to-local-time/blob/master/get/localt.py), which has 2 basic functions:
+It has 2 basic functions:
 * Getting the local time of any location in the world (needs IP)
 * Converting yours or anyone's local time into GMT/UTC (needs IP unless you are converting your time)
 
 
-## Installing requirements
+## Installing requirements and launching
 
 It's very easy and straightforward just run the following command:
 ```
 pip install -r requirements.txt
 ```
-Then run [dbdl.py](http://github.com/StamKaly/ip-to-local-time/blob/master/dbdl.py) to download the database with the time zones
+Then run [main.py](http://github.com/StamKaly/ip-to-local-time/blob/master/main.py) to launch it. You can also use it as a module for your
+own code! View below...
 
 
 ## Databases
@@ -28,8 +29,9 @@ So if you get an error by just using the 1st database, go ahead and add the IP w
 timezone in simple CSV format in the second database.
 
 
-## Example usage
+## Example usage as a module
 
+You may only need to use [get.localt](http://github.com/StamKaly/ip-to-local-time/blob/master/get/localt.py).
 ```
 >>> from get import *
 >>> print(localt.ip2lt("46.101.20.237")) # Print local time of the IP
