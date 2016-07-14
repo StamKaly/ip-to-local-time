@@ -1,7 +1,6 @@
 from get import *
 
-
-print('© Stam Kaly 2016. All rights reserved.\n\n')
+print('(c) Stam Kaly 2016. All rights reserved.\n\n')
 print(db.update())
 print('\n\nHow to use:\n   Use "ip = <ip>" and "tz = <time zone>" to save the values to memory for use of the commands\n\n   1. gmt2mt(<GMT time>): Converts given GMT time to your local time   Example: "gmt2mt(17:00)"\n'+"   2. gmt2lt(<GMT time>): Converts given GMT time to saved IP'"+ 's local time   Example: "gmt2lt(17:00)"\n   3. gmt2lt2(<GMT time>): Converts given GMT time to saved time zone'+ "'" + 's local time   Example: "gmt2lt2(17:00)"\n   4. ip2lt: Returns the local time of the saved IP   Example: "ip2lt"\n   5. ip2lt2: Returns the local time of the saved time zone   Example: "ip2lt2"\n\nType "help" to view this again!\nHave fun converting!')
 x = ''
