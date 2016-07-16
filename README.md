@@ -49,7 +49,7 @@ You may only need to use [get.localt](http://github.com/StamKaly/ip-to-local-tim
 ```
 
 
-Use of this software without the display of the copyright is not allowed.
+
 
 © Stam Kaly 2016. All rights reserved.
 <a target="_blank" href="http://www.copyrighted.com/copyrights/view/xycw-rozp-8la6-e6rz"><img border="0" alt="Copyrighted.com Registered &amp; Protected 
