@@ -47,3 +47,10 @@ You may only need to use [get.localt](http://github.com/StamKaly/ip-to-local-tim
 >>> print(localt.gmt2lt2("US/Eastern", "17", "00")) # Convert and print given GMT/UTC time(hours, minutes) in time zone's time.
 13:00
 ```
+
+
+Use of this software without the display of the copyright is not allowed.
+© Stam Kaly 2016. All rights reserved.
+<a target="_blank" href="http://www.copyrighted.com/copyrights/view/xycw-rozp-8la6-e6rz"><img border="0" alt="Copyrighted.com Registered &amp; Protected 
+XYCW-ROZP-8LA6-E6RZ" title="Copyrighted.com Registered &amp; Protected 
+XYCW-ROZP-8LA6-E6RZ" width="150" height="40" src="http://static.copyrighted.com/images/seal.gif" /></a>
