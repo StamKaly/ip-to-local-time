@@ -129,7 +129,7 @@ def gmt2lt2(time_zone, hours, minutes):
         minutes = int(minutes)
     except ValueError:
         return "Please input actual time!"
-    if (hours <= 24 and
+    if (hours <= 23 and
         minutes <= 59):
         try:
             target_tz = pytz.timezone(time_zone)
